@@ -91,7 +91,7 @@ function defineWatchTasks() {
  * @static
  */
 gulp.task('deploy', (done) => {
-  runSequence('validate:id', 'build', 'deploy:replace', done);
+  runSequence('validate:id', 'deploy:replace', done);
 });
 
 /**
