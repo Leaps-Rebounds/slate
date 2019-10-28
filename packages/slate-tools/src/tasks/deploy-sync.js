@@ -54,16 +54,13 @@ gulp.task('deploy:sync-init', () => {
       },
     },
     snippetOptions: {
-      // Provide a custom Regex for inserting the snippet.
       rule: {
-        match: /<\/body>/i,
-        fn: (snippet, match) => {
-          return `<script defer="defer">${devScript}</script>
-                  ${snippet}
-                  ${match}`;
-        },
-      },
-    },
+          match: /<\/body>/i,
+          fn: function (snippet, match) {
+              return snippet + match;
+          }
+      }
+    }
   });
 });
 
