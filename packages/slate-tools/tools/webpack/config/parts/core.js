@@ -100,6 +100,7 @@ module.exports = {
       {
         from: config.get('paths.theme.src.snippets'),
         to: config.get('paths.theme.dist.snippets'),
+        flatten: true,
       },
       {
         from: config.get('paths.theme.src.templates'),

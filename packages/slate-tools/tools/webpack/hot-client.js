@@ -15,7 +15,9 @@ client.subscribe((event) => {
   if (event.action === 'shopify_upload_finished') {
     // Reload either if the serve force's our hand or if the entry point module
     if (event.force || window.__slate_should_reload__) {
-      window.location.reload();
+      setTimeout(function() {
+        window.location.reload();
+      }, 2000);
     }
   }
 });
