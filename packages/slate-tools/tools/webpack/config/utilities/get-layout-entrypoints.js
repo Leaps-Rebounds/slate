@@ -13,8 +13,19 @@ module.exports = function() {
       'layout',
       `${name}.js`,
     );
+
     if (fs.existsSync(jsFile)) {
       entrypoints[`layout.${name}`] = jsFile;
+    }
+
+    const jsFileAboveTheFold = path.join(
+      config.get('paths.theme.src.scripts'),
+      'layout',
+      `${name}.above-the-fold.js`,
+    );
+
+    if (fs.existsSync(jsFileAboveTheFold)) {
+      entrypoints[`layout.${name}.above-the-fold`] = jsFileAboveTheFold;
     }
   });
   return entrypoints;

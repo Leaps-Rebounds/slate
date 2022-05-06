@@ -46,6 +46,17 @@ module.exports = function() {
     if (isValidTemplate(name) && fs.existsSync(jsFile)) {
       entrypoints[`template.${name}`] = jsFile;
     }
+
+    const jsFileAboveTheFold = path.join(
+      config.get('paths.theme.src.scripts'),
+      'templates',
+      `${name}.above-the-fold.js`,
+    );
+
+    if (isValidTemplate(name) && fs.existsSync(jsFileAboveTheFold)) {
+      entrypoints[`template.${name}.above-the-fold`] = jsFileAboveTheFold;
+    }
+
   });
 
   fs
