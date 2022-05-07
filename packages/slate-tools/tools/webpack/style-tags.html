@@ -8,6 +8,7 @@
     <% } else { %>
       <% var src = `{{ '${basename}' | asset_url }}` %>
     <% } %>
+    <!-- Chunkname <%= chunkName %> -->
     <% if (typeof htmlWebpackPlugin.options.liquidTemplates[chunkName] !== 'undefined') { %>
       <% var chunkTemplate = htmlWebpackPlugin.options.liquidTemplates[chunkName] %>
       <% if (chunkTemplate.includes('customers/') || chunkTemplate.includes('customers\\')) { %>
@@ -30,7 +31,7 @@
         <link rel="prefetch" href="<%= src %>" as="style">
       {%- endif -%}
     <% } else if (chunkName.split('@').length > 1) { %>
-      <% var pages = chunkName.split('@').slice(1) %>
+      <% var pages = chunkName.split('@') %>
       <% var conditions = [] %>
       <% pages.forEach(function(page){ %>
         <% var pageTemplate = htmlWebpackPlugin.options.liquidTemplates[page] %>
