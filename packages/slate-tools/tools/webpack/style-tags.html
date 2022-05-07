@@ -8,7 +8,6 @@
     <% } else { %>
       <% var src = `{{ '${basename}' | asset_url }}` %>
     <% } %>
-    <!-- Chunkname <%= chunkName %> -->
     <% if (typeof htmlWebpackPlugin.options.liquidTemplates[chunkName] !== 'undefined') { %>
       <% var chunkTemplate = htmlWebpackPlugin.options.liquidTemplates[chunkName] %>
       <% if (chunkTemplate.includes('customers/') || chunkTemplate.includes('customers\\')) { %>
