@@ -30,7 +30,7 @@
         <link rel="prefetch" href="<%= src %>" as="style">
       {%- endif -%}
     <% } else if (chunkName.split('@').length > 1) { %>
-      <% var pages = chunkName.split('@').slice(1) %>
+      <% var pages = chunkName.split('@') %>
       <% var conditions = [] %>
       <% pages.forEach(function(page){ %>
         <% var pageTemplate = htmlWebpackPlugin.options.liquidTemplates[page] %>
