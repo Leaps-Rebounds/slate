@@ -3,7 +3,7 @@
   "private": true,
   "author": "Shopify Inc.",
   "description": "A theme scaffold and command line tool for developing Shopify themes.",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "keywords": [
     "slate",
     "shopify",
