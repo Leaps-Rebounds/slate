@@ -84,8 +84,27 @@ module.exports = merge([
 
       new HtmlWebpackPlugin({
         excludeChunks: ['static'],
-        filename: `../snippets/above-the-fold.liquid`,
-        template: path.resolve(__dirname, '../above-the-fold.html'),
+        filename: `../snippets/above-the-fold-js.liquid`,
+        template: path.resolve(__dirname, '../above-the-fold-js.html'),
+        inject: false,
+        minify: {
+          removeComments: true,
+          collapseWhitespace: true,
+          removeAttributeQuotes: false,
+          preserveLineBreaks: true,
+          // more options:
+          // https://github.com/kangax/html-minifier#options-quick-reference
+        },
+        // necessary to consistently work with multiple chunks via CommonsChunkPlugin
+        chunksSortMode: 'dependency',
+        liquidTemplates: getTemplateEntrypoints(),
+        liquidLayouts: getLayoutEntrypoints(),
+      }),
+
+      new HtmlWebpackPlugin({
+        excludeChunks: ['static'],
+        filename: `../snippets/above-the-fold-css.liquid`,
+        template: path.resolve(__dirname, '../above-the-fold-css.html'),
         inject: false,
         minify: {
           removeComments: true,

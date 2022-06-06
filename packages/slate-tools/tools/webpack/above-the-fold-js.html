@@ -1,5 +1,5 @@
 <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
-  <% if (!chunk.includes(".above-the-fold")) { %>
+  <% if (chunk.includes(".above-the-fold")) { %>
     <% if (htmlWebpackPlugin.options.isDevServer === true) { %>
       <% var src = htmlWebpackPlugin.files.chunks[chunk].entry %>
     <% } else { %>
@@ -7,6 +7,7 @@
       <% var src = `{{ '${basename}' | asset_url }}` %>
     <% } %>
 
+    <% var chunk = chunk.split('.above-the-fold').join('') %>
     <% if (typeof htmlWebpackPlugin.options.liquidLayouts[chunk] !== 'undefined') { %>
       {%- if layout == '<%= chunk.split('.')[1] %>' -%}
         <script type="text/javascript" src="<%= src %>" defer></script>
