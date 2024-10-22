@@ -15,7 +15,7 @@ module.exports = {
   context: config.get('paths.theme.src'),
 
   output: {
-    filename: '[name].js',
+    filename: '[hash].[id].js',
     path: config.get('paths.theme.dist.assets'),
     jsonpFunction: 'shopifySlateJsonp',
   },
