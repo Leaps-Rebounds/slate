@@ -8,22 +8,28 @@
     <% if (htmlWebpackPlugin.options.isDevServer === true && !basename.includes('.styleLiquid')) { %>
       <% var src = key %>
     <% } else { %>
-      <% var src = `{{ '${chunk.css[0]}' | asset_url }}` %>
+      <% var src = `{{ '${chunk.css[0].split('/').pop()}' | asset_url }}` %>
     <% } %>
     <% if (typeof htmlWebpackPlugin.options.liquidTemplates[chunkName] !== 'undefined') { %>
       <% var chunkTemplate = htmlWebpackPlugin.options.liquidTemplates[chunkName] %>
       <% if (chunkTemplate.includes('customers/') || chunkTemplate.includes('customers\\')) { %>
         {%- if template == 'customers/<%= chunkName.split('.').slice(1).join('.') %>' -%}
-          <style><%= fileNameWithPath %></style>
+          <link type="text/css" href="<%= src %>" rel="stylesheet">
+        {%- else -%}
+          <link rel="prefetch" href="<%= src %>" as="style">
         {%- endif -%}
       <% } else { %>
         {%- if template == '<%= chunkName.split('.').slice(1).join('.') %>' -%}
-          <style><%= fileNameWithPath %></style>
+          <link type="text/css" href="<%= src %>" rel="stylesheet">
+        {%- else -%}
+          <link rel="prefetch" href="<%= src %>" as="style">
         {%- endif -%}
       <% } %>
     <% } else if (typeof htmlWebpackPlugin.options.liquidLayouts[chunkName] !== 'undefined') { %>
       {%- if layout == '<%= chunkName.split('.')[1] %>' -%}
-        <style><%= fileNameWithPath %></style>
+        <link type="text/css" href="<%= src %>" rel="stylesheet">
+      {%- else -%}
+        <link rel="prefetch" href="<%= src %>" as="style">
       {%- endif -%}
     <% } else if (chunkName.split('@').length > 1) { %>
       <% var pages = chunkName.split('@').slice(1) %>
@@ -41,10 +47,12 @@
         <% } %>
       <% }); %>
       {%- if <%= conditions.join(' or ') %> -%}
-        <style><%= fileNameWithPath %></style>
+        <link type="text/css" href="<%= src %>" rel="stylesheet">
+      {%- else -%}
+        <link rel="prefetch" href="<%= src %>" as="style">
       {%- endif -%}
     <% } else { %>
-      <style><%= fileNameWithPath %></style>
+      <link type="text/css" href="<%= src %>" rel="stylesheet">
     <% } %>
   <% } %>
 <% } %>

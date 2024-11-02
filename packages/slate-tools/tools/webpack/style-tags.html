@@ -6,7 +6,7 @@
     <% if (htmlWebpackPlugin.options.isDevServer === true && !basename.includes('.styleLiquid')) { %>
       <% var src = key %>
     <% } else { %>
-      <% var src = `{{ '${chunk.css[0]}' | asset_url }}` %>
+      <% var src = `{{ '${chunk.css[0].split('/').pop()}' | asset_url }}` %>
     <% } %>
     <% if (typeof htmlWebpackPlugin.options.liquidTemplates[chunkName] !== 'undefined') { %>
       <% var chunkTemplate = htmlWebpackPlugin.options.liquidTemplates[chunkName] %>
