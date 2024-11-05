@@ -15,7 +15,7 @@ module.exports = {
   context: config.get('paths.theme.src'),
 
   output: {
-    filename: process.env.NODE_ENV === 'development' ? '[name].js' : '[chunkhash].js',
+    filename: '[name].js',
     path: config.get('paths.theme.dist.assets'),
     jsonpFunction: 'shopifySlateJsonp',
   },

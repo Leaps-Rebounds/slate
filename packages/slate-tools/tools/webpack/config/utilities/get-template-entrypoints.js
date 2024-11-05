@@ -50,11 +50,11 @@ module.exports = function() {
     const jsFileAboveTheFold = path.join(
       config.get('paths.theme.src.scripts'),
       'templates',
-      `${name}.above-the-fold.js`,
+      `${name}.atf.js`,
     );
 
     if (isValidTemplate(name) && fs.existsSync(jsFileAboveTheFold)) {
-      entrypoints[`template.${name}.above-the-fold`] = jsFileAboveTheFold;
+      entrypoints[`template.${name}.atf`] = jsFileAboveTheFold;
     }
 
   });

@@ -21,11 +21,11 @@ module.exports = function() {
     const jsFileAboveTheFold = path.join(
       config.get('paths.theme.src.scripts'),
       'layout',
-      `${name}.above-the-fold.js`,
+      `${name}.atf.js`,
     );
 
     if (fs.existsSync(jsFileAboveTheFold)) {
-      entrypoints[`layout.${name}.above-the-fold`] = jsFileAboveTheFold;
+      entrypoints[`layout.${name}.atf`] = jsFileAboveTheFold;
     }
   });
   return entrypoints;

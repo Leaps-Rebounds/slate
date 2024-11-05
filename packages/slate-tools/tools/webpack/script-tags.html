@@ -1,5 +1,5 @@
 <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
-  <% if (!chunk.includes(".above-the-fold")) { %>
+  <% if (!chunk.includes(".atf")) { %>
     <% if (htmlWebpackPlugin.options.isDevServer === true) { %>
       <% var src = htmlWebpackPlugin.files.chunks[chunk].entry %>
     <% } else { %>

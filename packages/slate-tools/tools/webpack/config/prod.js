@@ -32,7 +32,7 @@ module.exports = merge([
 
     plugins: [
       new MiniCssExtractPlugin({
-        filename: '[chunkhash].css.liquid',
+        filename: '[name].css.liquid',
       }),
 
       new webpack.DefinePlugin({

@@ -2,8 +2,8 @@
 <% for (const [key, chunk] of chunks ) { %>
   <% var fileNameWithPath = chunk.css[0] %>
   <% var basename = key.split('/').reverse()[0]; %>
-  <% var chunkName = basename.replace('.scss', '').replace('.css', '').replace('.styleLiquid', '').replace('.above-the-fold', ''); %>
-  <% if (basename.includes('.above-the-fold')) { %>
+  <% var chunkName = basename.replace('.scss', '').replace('.css', '').replace('.styleLiquid', '').replace('.atf', ''); %>
+  <% if (basename.includes('.atf')) { %>
     <% var isLiquidStyle = /.liquidStyle.css$/.test(basename) %>
     <% if (htmlWebpackPlugin.options.isDevServer === true && !basename.includes('.styleLiquid')) { %>
       <% var src = key %>
