@@ -25,9 +25,12 @@ module.exports = function(module, chunks, cacheGroup) {
   // long, it is truncated and a hash is appended. The limit has
   // been set to 100 to prevent `[name].[chunkhash].[ext]` from
   // generating a 256+ character string.
-  if (name.length > 200) {
-    name = `${name.slice(0, 200)}.${hashFilename(name)}`;
-  }
+
+  // Using this leads to a hellish webpack issue where it compiles
+  // correctly but doesn't run javascript in certain entrypoints
+  // if (name.length > 200) {
+  //   name = `${name.slice(0, 200)}.${hashFilename(name)}`;
+  // }
 
   /* eslint-disable-next-line consistent-return */
   return name;
