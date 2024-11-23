@@ -44,7 +44,10 @@
         <% } else if (typeof htmlWebpackPlugin.options.liquidLayouts[page] !== 'undefined') { %>
           <% conditions.push("layout == '" + page.split('.')[1] + "'") %>
         <% } else { %>
-          <% conditions.push("template == '" + page.split('.').map(name => nameMap[name] || name).slice(1).join('.') + "'") %>
+          <% var condition = page.split('.').map(name => nameMap[name] || name).slice(1).join('.') %>
+          <% if (condition.length > 0) { %>
+            <% conditions.push("template == '" + condition + "'") %>
+          <% } %>
         <% } %>
       <% }); %>
       {%- if <%= conditions.join(' or ') %> -%}
