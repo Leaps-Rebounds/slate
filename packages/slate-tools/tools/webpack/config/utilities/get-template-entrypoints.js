@@ -37,6 +37,7 @@ module.exports = function() {
 
   fs.readdirSync(config.get('paths.theme.src.templates')).forEach((file) => {
     const name = path.parse(file).name;
+
     const jsFile = path.join(
       config.get('paths.theme.src.scripts'),
       'templates',
@@ -56,7 +57,6 @@ module.exports = function() {
     if (isValidTemplate(name) && fs.existsSync(jsFileAboveTheFold)) {
       entrypoints[`template.${name}.atf`] = jsFileAboveTheFold;
     }
-
   });
 
   fs

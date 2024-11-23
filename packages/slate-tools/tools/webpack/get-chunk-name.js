@@ -1,8 +1,9 @@
 const crypto = require('crypto');
+const name_shortener = require('./config/utilities/name-shortener');
 
 module.exports = function(module, chunks, cacheGroup) {
   let containsLayout = false;
-  const names = chunks
+  let names = chunks
     .map((chunk) => {
       if (chunk.name.includes('layout.')) {
         containsLayout = true;
@@ -15,7 +16,8 @@ module.exports = function(module, chunks, cacheGroup) {
 
   if (!names.every(Boolean)) return;
 
-  names.sort();
+  names = names.map(name => name_shortener.toShortName(name)).sort();
+  // names.sort();
   let name =
     (cacheGroup && cacheGroup !== 'default' ? `${cacheGroup}@` : '') +
     names.join('@');

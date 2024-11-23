@@ -1,3 +1,4 @@
+<% var nameMap = { TE: 'template', AR: 'article', BL: 'blog', CO: 'collection', PA: 'page', PR: 'product' } %>
 <% for (const [key, chunk] of Object.entries(htmlWebpackPlugin.files.chunks)) { %>
   <% var basename = key.split('/').reverse()[0]; %>
   <% var chunkName = basename.replace('.scss', '').replace('.css', '').replace('.styleLiquid', ''); %>
@@ -42,6 +43,8 @@
           <% } %>
         <% } else if (typeof htmlWebpackPlugin.options.liquidLayouts[page] !== 'undefined') { %>
           <% conditions.push("layout == '" + page.split('.')[1] + "'") %>
+        <% } else { %>
+          <% conditions.push("template == '" + page.split('.').map(name => nameMap[name] || name).slice(1).join('.') + "'") %>
         <% } %>
       <% }); %>
       {%- if <%= conditions.join(' or ') %> -%}

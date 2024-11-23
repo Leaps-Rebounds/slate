@@ -1,3 +1,4 @@
+<% var nameMap = { TE: 'template', AR: 'article', BL: 'blog', CO: 'collection', PA: 'page', PR: 'product' } %>
 <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
   <% if (!chunk.includes(".atf")) { %>
     <% if (htmlWebpackPlugin.options.isDevServer === true) { %>
@@ -28,10 +29,12 @@
           <% } %>
         <% } else if (typeof htmlWebpackPlugin.options.liquidLayouts[page] !== 'undefined') { %>
           <% conditions.push("layout == '" + page.split('.')[1] + "'") %>
+        <% } else { %>
+          <% conditions.push("template == '" + page.split('.').map(name => nameMap[name] || name).slice(1).join('.') + "'") %>
         <% } %>
       <% }); %>
 
-      {%- if <%= conditions.join(' or ') %> -%}
+      {%- if <%= conditions.filter(c => c.length > 0).join(' or ') %> -%}
         <script type="text/javascript" src="<%= src %>" defer></script>
       {%- else -%}
         <link rel="prefetch" href="<%= src %>" as="script">

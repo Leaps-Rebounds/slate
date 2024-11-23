@@ -28,5 +28,6 @@ module.exports = function() {
       entrypoints[`layout.${name}.atf`] = jsFileAboveTheFold;
     }
   });
+
   return entrypoints;
 };
