@@ -19,6 +19,10 @@ module.exports = {
   'paths.theme.src.assets': (config) =>
     path.join(config.get('paths.theme.src'), 'assets'),
 
+  // Source directory of blocks folder (Added by Alex)
+  'paths.theme.src.blocks': (config) =>
+    path.join(config.get('paths.theme.src'), 'blocks'),
+
   // Source of theme configuration files
   'paths.theme.src.config': (config) =>
     path.join(config.get('paths.theme.src'), 'config'),
@@ -61,6 +65,10 @@ module.exports = {
   // Distribution assets directory
   'paths.theme.dist.config': (config) =>
     path.join(config.get('paths.theme.dist'), 'config'),
+
+  // Distribution blocks directory (Added by Alex)
+  'paths.theme.dist.blocks': (config) =>
+    path.join(config.get('paths.theme.dist'), 'blocks'),
 
   // Distribution of theme liquid layout files
   'paths.theme.dist.layout': (config) =>
